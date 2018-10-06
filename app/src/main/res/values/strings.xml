@@ -6,5 +6,6 @@
         <item>Litros</item>
         <item>Cajas</item>
         <item>Paquetes</item>
+        <item>Otro</item>
     </string-array>
 </resources>

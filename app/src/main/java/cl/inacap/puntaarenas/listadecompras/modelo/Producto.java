@@ -11,12 +11,6 @@ public class Producto {
 
 
 
-    public static final Producto[] productos={
-            new Producto("Bebida",1,"litro"),
-    new Producto("Papas fritas",2,"Bolsas"),
-    new Producto("Aceitunas",2,"paquetes")
-    };
-
     public Producto(String nombre, int cantidad, String unidad) {
         this.nombre = nombre;
         this.cantidad = cantidad;

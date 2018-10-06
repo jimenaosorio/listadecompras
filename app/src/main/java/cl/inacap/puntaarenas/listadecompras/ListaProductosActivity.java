@@ -2,13 +2,20 @@ package cl.inacap.puntaarenas.listadecompras;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.database.DataSetObserver;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import cl.inacap.puntaarenas.listadecompras.modelo.ListaDeCompras;
 import cl.inacap.puntaarenas.listadecompras.modelo.Producto;
 
 public class ListaProductosActivity extends ListActivity {
@@ -24,10 +31,15 @@ public class ListaProductosActivity extends ListActivity {
     public void cargarLista()
     {
         lista=getListView();
+        List<Producto> productosList=ListaDeCompras.getInstancia().getListaDeCompras();
+        Producto[] productos=new Producto[productosList.size()];
+        for (int i=0;i<productos.length;i++ ) {
+            productos[i]=productosList.get(i);
+        }
         ArrayAdapter<Producto> listaAdapter=
                 new ArrayAdapter<Producto>(this,
                         android.R.layout.simple_list_item_1,
-                        Producto.productos);
+                        productos);
         lista.setAdapter(listaAdapter);
     }
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
+
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -12,9 +12,31 @@
         android:id="@+id/ver_lista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
         android:gravity="center"
-        android:text="Ver Lista"
         android:onClick="verLista"
-        />
+        android:text="Ver Lista" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/botonNuevo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:onClick="ingresarNuevo"
+        android:text="IngresarNuevo" />
+
+    <Button
+        android:id="@+id/eliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="218dp"
+        android:onClick="eliminarComprados"
+        android:text="Eliminar Productos Comprados" />
+
+</RelativeLayout>

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import cl.inacap.puntaarenas.listadecompras.modelo.ListaDeCompras;
 import cl.inacap.puntaarenas.listadecompras.modelo.Producto;
 
 public class DetallesActivity extends AppCompatActivity {
@@ -21,7 +22,7 @@ public class DetallesActivity extends AppCompatActivity {
         //Obtener el producto
         intent=getIntent();
         int id=(Integer)intent.getExtras().get("idProducto");
-        producto=Producto.productos[id];
+        producto= ListaDeCompras.getInstancia().getProducto(id);
 
         //Mostrar la informacion del producto
         TextView txtNombre=(TextView)findViewById(R.id.txtNombre);
