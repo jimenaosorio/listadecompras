@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void eliminarComprados(View view){
-        //lista.eliminarComprados();
-        Toast.makeText(this,"Se han eliminado los productos comprados",Toast.LENGTH_SHORT).show();
+        ComprasDatabaseHelper helper=new ComprasDatabaseHelper(this);
+        String mensaje=helper.eliminarComprados();
+        Toast.makeText(this,mensaje,Toast.LENGTH_SHORT).show();
     }
 }

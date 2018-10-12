@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import cl.inacap.puntaarenas.listadecompras.modelo.ComprasDatabaseHelper;
 import cl.inacap.puntaarenas.listadecompras.modelo.Producto;
@@ -49,7 +50,8 @@ public class DetallesActivity extends AppCompatActivity {
     public void cambiarEstado(View view){
         producto.setEstado(!producto.isEstado());
         //Actualizar en la base de datos
-        helper.cambiarEstado(producto);
+        String mensaje=helper.cambiarEstado(producto);
+        Toast.makeText(this,mensaje,Toast.LENGTH_SHORT).show();
         setResult(RESULT_OK, intent);
         finish();
 

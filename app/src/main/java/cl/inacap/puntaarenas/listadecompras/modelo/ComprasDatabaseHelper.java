@@ -111,5 +111,15 @@ public class ComprasDatabaseHelper extends SQLiteOpenHelper {
             return "No se pudo cambiar el estado";
         }
     }
+    public String eliminarComprados()
+    {
+        String sqlTxt="DELETE FROM PRODUCTOS WHERE ESTADO=0";
+        try{
+            getWritableDatabase().execSQL(sqlTxt);
+            return "Se eliminaron los productos comprados";
+        }catch (SQLException e){
+            return "No se eliminaron productos";
+        }
+    }
 
 }
