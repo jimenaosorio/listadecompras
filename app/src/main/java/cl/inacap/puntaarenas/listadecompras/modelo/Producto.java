@@ -9,7 +9,12 @@ public class Producto {
     private boolean estado;
     private static final boolean PENDIENTE=true;
 
-
+    public Producto(String nombre, int cantidad, String unidad, boolean estado) {
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.unidad = unidad;
+        this.estado = estado;
+    }
 
     public Producto(String nombre, int cantidad, String unidad) {
         this.nombre = nombre;

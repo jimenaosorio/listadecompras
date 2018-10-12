@@ -7,12 +7,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import cl.inacap.puntaarenas.listadecompras.modelo.ListaDeCompras;
+import cl.inacap.puntaarenas.listadecompras.modelo.ComprasDatabaseHelper;
 import cl.inacap.puntaarenas.listadecompras.modelo.Producto;
 
 public class NuevoProductoActivity extends AppCompatActivity {
 
-    private ListaDeCompras listaDeCompras=ListaDeCompras.getInstancia();
+    private ComprasDatabaseHelper helper=new ComprasDatabaseHelper(this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,10 @@ public class NuevoProductoActivity extends AppCompatActivity {
                 unidad=unidadNueva;
             }
             Producto producto=new Producto(nombre,cantidad,unidad);
-            listaDeCompras.agregarProducto(producto);
+
+            //Agregar el producto a la base de datos
+            helper.ingresarProducto(producto);
+
             finish();
         }
     }

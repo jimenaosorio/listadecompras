@@ -7,12 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import cl.inacap.puntaarenas.listadecompras.modelo.ListaDeCompras;
+import cl.inacap.puntaarenas.listadecompras.modelo.ComprasDatabaseHelper;
 import cl.inacap.puntaarenas.listadecompras.modelo.Producto;
 
 public class DetallesActivity extends AppCompatActivity {
     public Producto producto;
     public Intent intent;
+    public ComprasDatabaseHelper helper=new ComprasDatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +22,10 @@ public class DetallesActivity extends AppCompatActivity {
 
         //Obtener el producto
         intent=getIntent();
-        int id=(Integer)intent.getExtras().get("idProducto");
-        producto= ListaDeCompras.getInstancia().getProducto(id);
+        String nombreProducto=(String) intent.getExtras().get("nombreProducto");
+
+        //Traer el producto de la base de d atos
+        producto=helper.getProducto(nombreProducto);
 
         //Mostrar la informacion del producto
         TextView txtNombre=(TextView)findViewById(R.id.txtNombre);
@@ -40,10 +43,13 @@ public class DetallesActivity extends AppCompatActivity {
             txtEstado.setText("Comprado");
             cambiar.setText("Marcar como pendiente");
         }
+
     }
 
     public void cambiarEstado(View view){
         producto.setEstado(!producto.isEstado());
+        //Actualizar en la base de datos
+        helper.cambiarEstado(producto);
         setResult(RESULT_OK, intent);
         finish();
 

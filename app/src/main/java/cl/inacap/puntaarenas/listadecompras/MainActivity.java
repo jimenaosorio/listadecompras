@@ -8,11 +8,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import cl.inacap.puntaarenas.listadecompras.modelo.ListaDeCompras;
+import cl.inacap.puntaarenas.listadecompras.modelo.ComprasDatabaseHelper;
 import cl.inacap.puntaarenas.listadecompras.modelo.Producto;
 
 public class MainActivity extends AppCompatActivity {
-    private ListaDeCompras lista=ListaDeCompras.getInstancia();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +20,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void verLista(View view){
+        ComprasDatabaseHelper helper=new ComprasDatabaseHelper(this);
 
-        ArrayList<Producto> productos=lista.getListaDeCompras();
+        ArrayList<Producto> productos=(ArrayList<Producto>) helper.listaProductos();
+
+
         if(productos.size()>0) {
             Intent intent=new Intent(this,ListaProductosActivity.class);
             startActivity(intent);
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         else{
             Toast.makeText(this,"Lista vacia",Toast.LENGTH_SHORT).show();
         }
+
     }
     public void ingresarNuevo(View view){
 
@@ -39,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void eliminarComprados(View view){
-        lista.eliminarComprados();
+        //lista.eliminarComprados();
         Toast.makeText(this,"Se han eliminado los productos comprados",Toast.LENGTH_SHORT).show();
     }
 }
