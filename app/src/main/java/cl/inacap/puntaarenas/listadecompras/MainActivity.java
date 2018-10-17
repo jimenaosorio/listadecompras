@@ -21,15 +21,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void verLista(View view){
         ComprasDatabaseHelper helper=new ComprasDatabaseHelper(this);
-
-        ArrayList<Producto> productos=(ArrayList<Producto>) helper.listaProductos();
-
-
-        if(productos.size()>0) {
+        try{
+            ArrayList<Producto> productos=(ArrayList<Producto>) helper.listaProductos();
             Intent intent=new Intent(this,ListaProductosActivity.class);
             startActivity(intent);
         }
-        else{
+        catch (Exception e){
             Toast.makeText(this,"Lista vacia",Toast.LENGTH_SHORT).show();
         }
 

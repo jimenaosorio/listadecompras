@@ -1,7 +1,5 @@
 package cl.inacap.puntaarenas.listadecompras.modelo;
 
-import cl.inacap.puntaarenas.listadecompras.R;
-
 public class Producto {
     private String nombre;
     private int cantidad;

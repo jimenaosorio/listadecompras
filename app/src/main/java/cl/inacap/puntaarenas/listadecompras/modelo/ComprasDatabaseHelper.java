@@ -59,16 +59,16 @@ public class ComprasDatabaseHelper extends SQLiteOpenHelper {
                 null,null);
         cursor.moveToFirst();
         int estadoInt;
-        boolean estado=true;
-        while (cursor.moveToNext())
+        boolean estado=false;
+        do
         {
             estadoInt=cursor.getInt(3);
             if(estadoInt==1) estado=true;
-            else estado=false;
+
             productos.add(new Producto(cursor.getString(0),
                     cursor.getInt(1),
                     cursor.getString(2),estado));
-        }
+        }while (cursor.moveToNext());
         cursor.close();
         db.close();
         return productos;
